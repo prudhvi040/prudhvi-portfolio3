@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prudhvi Sai Ramisetti • Data Analyst</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    :root {
+      --pink-soft: #ffebee;
+      --pink-light: #ffcdd2;
+      --pink-medium: #f48fb1;
+      --cream: #fff8e1;
+      --beige-light: #f5f0e6;
+      --accent-dark: #880e4f;
+      --text-dark: #3a1f2e;
+      --text-light: #5c3d4f;
+    }
+
+    [data-theme="dark"] {
+      --pink-soft: #2d1b24;
+      --pink-light: #4a2c3d;
+      --pink-medium: #c76c98;
+      --cream: #1e1e2e;
+      --beige-light: #2a1f2a;
+      --accent-dark: #f48fb1;
+      --text-dark: #f0e6ef;
+      --text-light: #c9b4c4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--pink-soft);
+      color: var(--text-dark);
+      line-height: 1.7;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 4%;
+    }
+
+    header {
+      padding: 2.2rem 0 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 3.2rem;
+      color: var(--pink-medium);
+      letter-spacing: -1px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.4rem;
+      margin-top: 1.4rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--pink-medium);
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: absolute;
+      top: 2rem;
+      right: 4%;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-dark);
+      transition: transform 0.3s;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.2);
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--cream);
+      padding: 8rem 0 6rem;
+      position: relative;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 6rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 320px;
+    }
+
+    .hero-text h1 {
+      font-size: 4.8rem;
+      line-height: 1.05;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-tag {
+      font-size: 1.9rem;
+      color: var(--pink-medium);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero-description {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      max-width: 580px;
+    }
+
+    .hero-image {
+      flex: 0 0 380px;
+      text-align: center;
+    }
+
+    .hero-img {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 12px solid white;
+      box-shadow: 0 20px 60px rgba(136,14,79,0.25);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 0 4rem;
+    }
+
+    .section-title {
+      font-size: 3.4rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+      font-weight: 800;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 130px;
+      height: 5px;
+      background: var(--pink-medium);
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Welcome / About */
+    .welcome {
+      background: white;
+      padding: 6rem 0;
+      border-radius: 32px;
+      margin: 0 5%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+
+    [data-theme="dark"] .welcome {
+      background: #1e1e2e;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .welcome-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .welcome-text p {
+      font-size: 1.22rem;
+      margin-bottom: 1.6rem;
+      color: var(--text-light);
+    }
+
+    /* Resume Card (Replaced Education) */
+    .resume-card {
+      background: white;
+      padding: 3rem;
+      border-radius: 24px;
+      margin: 4rem auto 0;
+      max-width: 840px;
+      box-shadow: 0 14px 45px rgba(136,14,79,0.14);
+      border-left: 6px solid var(--pink-medium);
+      text-align: center;
+    }
+
+    [data-theme="dark"] .resume-card {
+      background: #2d1b24;
+      box-shadow: 0 14px 45px rgba(0,0,0,0.6);
+    }
+
+    .resume-card h3 {
+      font-size: 2.3rem;
+      margin-bottom: 2.2rem;
+      text-align: center;
+      /* padding-left: 1rem; */
+    }
+
+    .resume-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .resume-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      padding: 1rem 2rem;
+      background: var(--pink-light);
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .resume-links a:hover {
+      background: var(--pink-medium);
+      color: white;
+    }
+
+    /* Skills */
+    #skills .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    #skills .card {
+      background: white;
+      padding: 2.2rem 1.8rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      width: 100%;
+      max-width: 280px;
+      transition: all 0.4s;
+    }
+
+    [data-theme="dark"] #skills .card {
+      background: #2d1b24;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    #skills .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 45px rgba(244,143,177,0.2);
+    }
+
+    #skills .card i {
+      font-size: 2.8rem;
+      color: var(--pink-medium);
+      margin-bottom: 1rem;
+    }
+
+    #skills .card p {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    /* Projects */
+    #projects .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+    }
+
+    #projects .project-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+      transition: all 0.4s;
+    }
+
+    [data-theme="dark"] #projects .project-card {
+      background: #2d1b24;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+    }
+
+    #projects .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 22px 55px rgba(244,143,177,0.22);
+    }
+
+    #projects .project-info {
+      padding: 2rem;
+    }
+
+    #projects .project-title {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    #projects .project-title i {
+      color: var(--pink-medium);
+      font-size: 1.9rem;
+    }
+
+    #projects .project-links a {
+      color: var(--pink-medium);
+      margin-right: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    /* Contact */
+    .contact-section {
+      background: var(--beige-light);
+      padding: 5rem 0;
+      border-radius: 36px;
+      margin: 4rem 5% 0;
+      position: relative;
+    }
+
+    [data-theme="dark"] .contact-section {
+      background: #2a1f2a;
+    }
+
+    .contact-content {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 4rem;
+      justify-items: start;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      align-items: center;
+      gap: 1.2rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .contact-item i {
+      color: var(--pink-medium);
+      font-size: 1.7rem;
+      text-align: center;
+      width: 40px;
+    }
+
+    .contact-item a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .contact-item a:hover {
+      color: var(--pink-medium);
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem 0 2.5rem;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .contact-item {
+        justify-self: center;
+        text-align: center;
+        grid-template-columns: 40px auto;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-img {
+        width: 340px;
+        height: 340px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #skills .expertise-grid,
+      #projects .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+<header>
+  <div class="logo">Prudhvi Sai Ramisetti</div>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#welcome">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+</header>
+
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Data Insights That Drive Decisions</h1>
+        <span class="hero-tag">DATA ANALYST</span>
+        <p class="hero-description">Transforming raw data into meaningful insights, scalable pipelines, and intelligent business solutions.</p>
+      </div>
+
+      <div class="hero-image">
+        <img src="profile.jpg" alt="Prudhvi Sai Ramisetti" class="hero-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="welcome" class="welcome">
+  <div class="container">
+    <div class="welcome-content">
+      <h2>Welcome To My Portfolio</h2>
+
+      <div class="welcome-text">
+        <p>I am a passionate and detail-driven Data Analyst who loves turning raw data into meaningful insights.</p>
+        <p>I am proficient in Data Analysis, Python, and Excel and building interactive dashboards that clearly communicate stories hidden in data.</p>
+        <p>I enjoy working with large and complex datasets, where I can explore patterns, clean information, and extract valuable business intelligence.</p>
+        <p>My strength lies in analyzing huge volumes of data and researching deeply to uncover trends, risks, and opportunities.</p>
+        <p>I also have a strong interest in data engineering concepts, building reliable data flows and structured systems.</p>
+        <p>With every project, I aim to combine technical skills with real-world problem solving.</p>
+        <p>For me, data is not just numbers—it’s a powerful tool to drive smarter decisions.</p>
+      </div>
+
+      <div class="resume-card">
+        <h3>Resume</h3>
+        <div class="resume-links">
+          <a href="https://drive.google.com/file/d/1nxAhPiOf3vAxclqhYY8_2-Tnku84ZVqW/view?usp=drivesdk" target="_blank">View Resume</a>
+          <a href="https://drive.google.com/uc?export=download&id=1nxAhPiOf3vAxclqhYY8_2-Tnku84ZVqW" download>Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">My Expertise</h2>
+    <div class="expertise-grid">
+      <div class="card"><i class="fa-brands fa-python"></i><p>Python</p></div>
+      <div class="card"><i class="fa-solid fa-database"></i><p>SQL</p></div>
+      <div class="card"><i class="fa-solid fa-chart-line"></i><p>Data Analytics</p></div>
+      <div class="card"><i class="fa-solid fa-gears"></i><p>Data Engineering</p></div>
+      <div class="card"><i class="fa-solid fa-chart-pie"></i><p>Dashboards</p></div>
+      <div class="card"><i class="fa-solid fa-file-excel"></i><p>Excel</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-info">
+          <h3 class="project-title"><i class="fa-solid fa-book"></i> Library Management System</h3>
+          <p>Database-driven system.</p>
+          <div style="margin-top:1rem;">
+            <a href="https://github.com/prudhvi040/LibraryManagementSystem.git" target="_blank">View</a> • 
+            <a href="https://github.com/prudhvi040/LibraryManagementSystem/archive/refs/heads/main.zip" target="_blank">Download</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-info">
+          <h3 class="project-title"><i class="fa-solid fa-chart-line"></i> Data Science Job Market Analysis</h3>
+          <p>Skill demand analysis.</p>
+          <div style="margin-top:1rem;">
+            <a href="https://docs.google.com/spreadsheets/d/1TEzH5u4rVHSG6AeIQxVCawGq-mhvdFaIL6Gj-eCr4nw/edit?gid=697089168#gid=697089168" target="_blank">View</a> • 
+            <a href="https://docs.google.com/spreadsheets/d/1TEzH5u4rVHSG6AeIQxVCawGq-mhvdFaIL6Gj-eCr4nw/edit?gid=697089168#gid=697089168" target="_blank">Download</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-info">
+          <h3 class="project-title"><i class="fa-solid fa-user-tie"></i> Job Advisor Expert System</h3>
+          <p>Rule-based recommendation.</p>
+          <div style="margin-top:1rem;">
+            <a href="https://github.com/prudhvi040/JobExpertSystem.git" target="_blank">View</a> • 
+            <a href="https://github.com/prudhvi040/JobExpertSystem/archive/refs/heads/main.zip" target="_blank">Download</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-info">
+          <h3 class="project-title"><i class="fa-solid fa-users-slash"></i> Employee Attrition Prediction</h3>
+          <p>ML-based churn prediction.</p>
+          <div style="margin-top:1rem;">
+            <a href="https://github.com/prudhvi040/Attrition-ML.git" target="_blank">View</a> • 
+            <a href="https://github.com/prudhvi040/Attrition-ML/archive/refs/heads/main.zip" target="_blank">Download</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-info">
+          <h3 class="project-title"><i class="fa-solid fa-robot"></i> AI Recruitment Screening Agent</h3>
+          <p>Automated screening tool.</p>
+          <div style="margin-top:1rem;">
+            <a href="https://run.relay.app/workflows/cmk76s5ii02nc0oknfzqx7zb2/edit" target="_blank">View</a> • 
+            <a href="https://github.com/prudhvi040/AI-recruitment-screening-agent-/archive/refs/heads/main.zip" target="_blank">Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-content">
+    <h2 class="section-title">Get In Touch</h2>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:+919182573471">+91 9182573471</a>
+      </div>
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:prudhvimj888@gmail.com">prudhvimj888@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <i class="fa-brands fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/prudhvi77" target="_blank">linkedin.com/in/prudhvi77</a>
+      </div>
+      <div class="contact-item">
+        <i class="fa-brands fa-github"></i>
+        <a href="https://github.com/prudhvi040" target="_blank">github.com/prudhvi040</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ©️ 2026 Prudhvi Sai Ramisetti • Data Analyst
+</footer>
+
+<script>
+  // Theme toggle functionality with localStorage persistence
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Load saved theme from localStorage or default to light
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  body.setAttribute('data-theme', savedTheme);
+
+  // Update icon based on current theme
+  function updateIcon() {
+    if (body.getAttribute('data-theme') === 'dark') {
+      themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    } else {
+      themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+  }
+
+  updateIcon(); // Initial icon setup
+
+  // Toggle theme on click
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateIcon();
+  });
+</script>
+
+</body>
+</html>
